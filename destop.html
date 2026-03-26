@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: #0f172a;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+#text {
+    font-size: 22px;
+    margin-bottom: 25px;
+    line-height: 1.4;
+}
+
+button {
+    padding: 14px 22px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#yes {
+    background: #ff4d6d;
+    color: white;
+}
+
+#no {
+    background: gray;
+    color: white;
+    position: fixed;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 22px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    from {transform: translateY(100vh);}
+    to {transform: translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <div id="text"></div>
+    <button id="yes" onclick="love()">Yes ❤️</button>
+    <button id="no">No 😜</button>
+</div>
+
+<script>
+let message = "Hey... I have something special to say 💖";
+let i = 0;
+
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+typeWriter();
+
+// ✅ Mobile touch support
+document.getElementById("no").addEventListener("touchstart", moveNo);
+document.getElementById("no").addEventListener("mouseover", moveNo);
+
+function moveNo() {
+    let btn = document.getElementById("no");
+    btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
+    btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+}
+
+function love() {
+    document.body.innerHTML = "<h1 style='color:pink;text-align:center;margin-top:40%;'>I LOVE YOU SO MUCH ❤️</h1>";
+    setInterval(createHeart, 200);
+}
+
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 4000);
+}
+</script>
+
+</body>
+</html>
