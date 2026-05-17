@@ -3,219 +3,328 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Just For You 💖</title>
+<title>My Queen Birthday</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(160deg, #0f172a, #1e293b);
-    font-family: 'Arial', sans-serif;
-    overflow: hidden;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* Container like app card */
-.container {
-    background: rgba(255,255,255,0.05);
-    border-radius: 30px;
-    padding: 25px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
-    animation: fadeIn 2s ease;
+body{
+font-family:'Poppins',sans-serif;
+height:100vh;
+overflow:hidden;
+background:#000;
 }
 
-/* Text area */
-#text {
-    font-size: 20px;
-    line-height: 1.5;
-    margin-bottom: 25px;
-    white-space: pre-line;
+.video-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
 }
 
-/* Buttons */
-button {
-    padding: 14px 25px;
-    margin: 10px;
-    font-size: 18px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: 0.3s;
+.overlay{
+position:fixed;
+inset:0;
+background:linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(255,0,111,0.5));
+z-index:-1;
 }
 
-#yes {
-    background: #ff4d6d;
-    color: white;
-    box-shadow: 0 0 20px #ff4d6d;
-}
-#yes:active { transform: scale(0.95); }
-
-#no {
-    background: gray;
-    color: white;
-    position: fixed;
+.container{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+position:relative;
 }
 
-/* Floating hearts, kisses, stars */
-.heart, .kiss, .star, .confetti {
-    position: fixed;
-    animation: float 4s linear infinite;
-}
-.heart { color: red; font-size: 22px; }
-.kiss { font-size: 20px; }
-.star { color: #fff; font-size: 14px; opacity: 0.7; }
-.confetti { font-size: 18px; }
-
-/* Animations */
-@keyframes float {
-    from {transform: translateY(100vh);}
-    to {transform: translateY(-10vh);}
-}
-@keyframes fadeIn {
-    from {opacity: 0; transform: translateY(20px);}
-    to {opacity: 1; transform: translateY(0);}
+.card{
+width:100%;
+max-width:380px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(14px);
+border:1px solid rgba(255,255,255,0.2);
+border-radius:35px;
+padding:30px 22px;
+text-align:center;
+box-shadow:0 0 40px rgba(255,0,111,0.5);
+animation:zoomIn 1.5s ease;
+position:relative;
+overflow:hidden;
 }
 
-/* Tareef cards */
-.tareef {
-    background: rgba(255,255,255,0.1);
-    padding: 15px;
-    border-radius: 20px;
-    margin: 15px 0;
-    font-size: 18px;
-    color: #fff5f5;
-    box-shadow: 0 4px 15px rgba(255,0,100,0.3);
-    transition: 0.3s;
-}
-.tareef:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 30px rgba(255,0,100,0.6);
+.card::before{
+content:'';
+position:absolute;
+width:180px;
+height:180px;
+background:rgba(255,255,255,0.15);
+border-radius:50%;
+top:-70px;
+right:-70px;
 }
 
-/* Proposal popup */
-#popup {
-    display: none;
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255,255,255,0.1);
-    padding: 30px;
-    border-radius: 25px;
-    text-align: center;
-    color: pink;
-    font-size: 24px;
-    box-shadow: 0 8px 30px rgba(255,0,100,0.6);
-    backdrop-filter: blur(10px);
+.card::after{
+content:'';
+position:absolute;
+width:140px;
+height:140px;
+background:rgba(255,255,255,0.08);
+border-radius:50%;
+bottom:-50px;
+left:-50px;
 }
-#popup button {
-    margin-top: 20px;
-    padding: 12px 25px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    background: #ff4d6d;
-    color: white;
-    box-shadow: 0 0 20px #ff4d6d;
+
+.photo-box{
+position:relative;
+width:150px;
+height:150px;
+margin:auto;
+margin-bottom:20px;
+}
+
+.photo{
+width:100%;
+height:100%;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #fff;
+box-shadow:0 0 30px rgba(255,255,255,0.7);
+animation:pulse 2s infinite;
+}
+
+.ring{
+position:absolute;
+inset:-10px;
+border:2px dashed rgba(255,255,255,0.8);
+border-radius:50%;
+animation:rotate 10s linear infinite;
+}
+
+h1{
+font-family:'Great Vibes',cursive;
+font-size:52px;
+color:#fff;
+margin-bottom:10px;
+text-shadow:0 0 15px rgba(255,255,255,0.8);
+}
+
+.name{
+font-size:20px;
+font-weight:600;
+color:#ffe0ea;
+margin-bottom:15px;
+}
+
+.message{
+font-size:15px;
+line-height:1.9;
+color:#fff;
+margin-bottom:25px;
+}
+
+.love-btn{
+display:inline-block;
+padding:15px 35px;
+border-radius:50px;
+background:linear-gradient(45deg,#ff006e,#ff4d9d);
+color:#fff;
+text-decoration:none;
+font-weight:600;
+letter-spacing:1px;
+box-shadow:0 10px 25px rgba(255,0,111,0.4);
+transition:0.4s;
+}
+
+.love-btn:hover{
+transform:scale(1.08);
+box-shadow:0 15px 35px rgba(255,0,111,0.7);
+}
+
+.popup{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+background:white;
+padding:30px 20px;
+width:90%;
+max-width:320px;
+border-radius:25px;
+text-align:center;
+transition:0.4s;
+z-index:1000;
+}
+
+.popup.active{
+transform:translate(-50%,-50%) scale(1);
+}
+
+.popup h2{
+color:#ff006e;
+margin-bottom:15px;
+font-size:28px;
+}
+
+.popup p{
+color:#444;
+line-height:1.7;
+font-size:15px;
+}
+
+.close-btn{
+margin-top:20px;
+padding:10px 25px;
+border:none;
+background:#ff006e;
+color:white;
+border-radius:40px;
+font-weight:600;
+cursor:pointer;
+}
+
+.hearts span{
+position:absolute;
+color:#fff;
+font-size:20px;
+animation:float 8s linear infinite;
+opacity:0.8;
+}
+
+.hearts span:nth-child(1){left:10%;animation-delay:0s;}
+.hearts span:nth-child(2){left:25%;animation-delay:2s;}
+.hearts span:nth-child(3){left:40%;animation-delay:4s;}
+.hearts span:nth-child(4){left:65%;animation-delay:1s;}
+.hearts span:nth-child(5){left:85%;animation-delay:3s;}
+
+@keyframes float{
+0%{transform:translateY(100vh) scale(0.5);opacity:0;}
+100%{transform:translateY(-120vh) scale(1.5);opacity:1;}
+}
+
+@keyframes rotate{
+100%{transform:rotate(360deg);}
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
+}
+
+@keyframes zoomIn{
+from{opacity:0;transform:scale(0.7);}
+to{opacity:1;transform:scale(1);}
+}
+
+@media(max-width:480px){
+h1{
+font-size:42px;
+}
+
+.message{
+font-size:14px;
+}
 }
 </style>
 </head>
 <body>
 
+<video autoplay muted loop class="video-bg">
+<source src="https://cdn.coverr.co/videos/coverr-pink-sky-1560087381332?download=1080p" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<div class="hearts">
+<span>❤</span>
+<span>❤</span>
+<span>❤</span>
+<span>❤</span>
+<span>❤</span>
+</div>
+
 <div class="container">
-    <div id="text"></div>
-    <div class="tareef">Your smile lights up my world 💖✨</div>
-    <div class="tareef">Your eyes sparkle like stars 🌟💫</div>
-    <div class="tareef">Your beauty is beyond words 💋❤️</div>
-    <button id="yes" onclick="love()">Yes ❤️</button>
-    <button id="no">No 😜</button>
+<div class="card">
+
+<div class="photo-box">
+<div class="ring"></div>
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop" class="photo">
 </div>
 
-<!-- Proposal Popup -->
-<div id="popup">
-    💍 Will you be mine forever? 💖<br>
-    <button onclick="confirmLove()">Yes 💖</button>
+<h1>Happy Birthday</h1>
+<div class="name">My Beautiful Queen ❤️</div>
+
+<div class="message">
+You are the reason behind my smile 🥺❤️<br><br>
+Every heartbeat of mine says your name...<br>
+I never knew love could feel this magical until I met you ✨<br><br>
+Today is not just your birthday...<br>
+Today is the day my happiness was born 💖
 </div>
 
-<!-- Background music -->
-<audio id="music" src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" loop></audio>
+<a href="javascript:void(0)" class="love-btn" onclick="openPopup()">Open Your Surprise 🎁</a>
+
+</div>
+</div>
+
+<div class="popup" id="popup">
+<h2>I Love You ❤️</h2>
+<p>
+No matter where life takes us...<br>
+I just want you beside me forever 🥺💍<br><br>
+Happy Birthday Baby 🎂✨
+</p>
+<button class="close-btn" onclick="closePopup()">Close</button>
+</div>
+
+<audio id="music" loop>
+<source src="your-song.mp3" type="audio/mp3">
+</audio>
 
 <script>
-// Typing message
-let messages = [
-    "Hey jaan… 💖\nI just want to tell you how amazing you are! 💋",
-    "Every moment with you feels like magic ✨",
-    "You are my world, my love ❤️"
-];
-let i = 0, msgIndex = 0;
-function typeWriter() {
-    if(i < messages[msgIndex].length){
-        document.getElementById("text").innerHTML += messages[msgIndex].charAt(i);
-        i++;
-        setTimeout(typeWriter, 40);
-    } else {
-        i=0;
-        msgIndex++;
-        if(msgIndex < messages.length){
-            setTimeout(()=>{document.getElementById("text").innerHTML+="\n\n"; typeWriter();}, 500);
-        }
-    }
-}
-typeWriter();
-
-// No button touch + hover
-document.getElementById("no").addEventListener("touchstart", moveNo);
-document.getElementById("no").addEventListener("mouseover", moveNo);
-function moveNo(){
-    let btn = document.getElementById("no");
-    btn.style.top = Math.random() * (window.innerHeight - 50) + "px";
-    btn.style.left = Math.random() * (window.innerWidth - 100) + "px";
+function openPopup(){
+document.getElementById('popup').classList.add('active');
+document.getElementById('music').play();
+confettiEffect();
 }
 
-// Love function
-function love(){
-    document.getElementById("music").play();
-    document.getElementById("popup").style.display="block";
-    setInterval(createHeart, 200);
-    setInterval(createKiss, 400);
-    setInterval(createStar, 150);
+function closePopup(){
+document.getElementById('popup').classList.remove('active');
 }
 
-// Floating hearts & kisses
-function createHeart(){
-    let heart=document.createElement("div"); heart.className="heart"; heart.innerHTML="❤️";
-    heart.style.left=Math.random()*100 + "vw"; document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),4000);
+function confettiEffect(){
+for(let i=0;i<80;i++){
+let heart=document.createElement('div');
+heart.innerHTML='💖';
+heart.style.position='fixed';
+heart.style.left=Math.random()*100+'vw';
+heart.style.top='-20px';
+heart.style.fontSize=(Math.random()*20+10)+'px';
+heart.style.animation='fall 4s linear forwards';
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},4000);
 }
-function createKiss(){
-    let kiss=document.createElement("div"); kiss.className="kiss"; kiss.innerHTML="💋";
-    kiss.style.left=Math.random()*100 + "vw"; document.body.appendChild(kiss);
-    setTimeout(()=>kiss.remove(),4000);
-}
-function createStar(){
-    let star=document.createElement("div"); star.className="star"; star.innerHTML="✨";
-    star.style.left=Math.random()*100 + "vw"; star.style.top=Math.random()*100 + "vh";
-    star.style.fontSize=(5+Math.random()*15)+"px"; star.style.opacity=Math.random();
-    document.body.appendChild(star);
-    setTimeout(()=>star.remove(),5000);
 }
 
-// Confirm Love button
-function confirmLove(){
-    document.body.innerHTML = `<h1 style='text-align:center;color:#ff4d6d;margin-top:30%;font-size:28px;'>
-    I LOVE YOU SO MUCH 💖💋😘<br>
-    You are my everything ✨❤️
-    </h1>`;
-    setInterval(createHeart,200);
-    setInterval(createKiss,400);
-    setInterval(createStar,150);
-}
+const style=document.createElement('style');
+style.innerHTML=`
+@keyframes fall{
+0%{transform:translateY(-10vh) rotate(0deg);opacity:1;}
+100%{transform:translateY(110vh) rotate(720deg);opacity:0;}
+}`;
+document.head.appendChild(style);
 </script>
+
 </body>
 </html>
